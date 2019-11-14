@@ -44,27 +44,26 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("yellow");
+    		stroke("green");
         strokeWeight(5);
-    		fill("yellow");
+    		fill("green");
 		    ellipse(this.x,this.y,20,20);
-        line(this.x,this.y, this.x, this.y+40);
-        line(this.x, this.y+40, this.x-20, this.y+60);
-        line(this.x, this.y+40, this.x+10, this.y+50);
-        line(this.x+10, this.y+50, this.x+5, this.y+60);
-        line(this.x, this.y+15, this.x-10, this.y+25);
-        line(this.x-10, this.y+25, this.x, this.y+30);
+
 	}
 
 	moveMe(){
-    if (keyIsDown(LEFT_ARROW)) { //if you hold the up arrow, move left by speed
-       this.x = this.x - this.speed;
+    if (keyIsDown(UP_ARROW)) { //if you hold the up arrow, move left by speed
+       this.y = this.y - 15;
     }
 
-    if (keyIsDown(RIGHT_ARROW)) { // if you hold the down arrow, move right by speed
-        this.x += this.speed;
-    }
-	}
+    if (keyIsDown(RIGHT_ARROW)) { //if you hold the up arrow, move left by speed
+       this.x += this.speed;
+  	}
+
+  if (keyIsDown(LEFT_ARROW)) { //if you hold the up arrow, move left by speed
+     this.x = this.x - this.speed;
+   }
+}
 
   die(){
 
