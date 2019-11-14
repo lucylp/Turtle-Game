@@ -105,3 +105,25 @@ class Ball {
   	}
 
 }
+
+class Bar {
+
+  //every bar needs a speed of descent (y axis), and a y value for a change in position
+  constructor(speed){
+    this.y = y;
+    this.speed = speed;
+  }
+
+  //draw a bar on the screen at (0,0)
+  drawBar(){
+    fill("green");
+    rectangle(0, 0+this.y, 500, 100);
+  }
+
+  //update the location of the bar, so it moves down the screen
+  moveBar(){
+    0 = x;
+    this.y = 0 - this.speed
+  }
+
+}
