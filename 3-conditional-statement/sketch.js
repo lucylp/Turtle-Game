@@ -1,5 +1,5 @@
-//create an empty array called balls
-let balls = [];
+//create an empty array called Turtles
+let Turtles = [];
 
 //create a variable to hold your avatar
 let me;
@@ -14,25 +14,39 @@ function setup() {
 }
 
 function draw(){
-	background(220);
+	background(92, 188, 214);
 
   me.drawMe();
   me.moveMe();
 
-  if (frameCount % 35 == 0) {
-      let  b = new Ball(random(0,width), 0, -3);
-      balls.push(b);
-      console.log(balls); //print the balls array to the console
+  if (frameCount % 25 == 0) {
+      let b = new Turtle(random(0,width), 0, -1);
+      Turtles.push(b);
+      console.log(Turtles); //print the Turtles array to the console
     }
 
-//	draw all the balls in that array
-	for (let i = 0; i < balls.length; i++) {
-	 	      balls[i].drawBall();
-       	  balls[i].moveBall();
-        	balls[i].bounceBall();
+//	draw all the Turtles in that array
+	for (let i = 0; i < Turtles.length; i++) {
+	 	      Turtles[i].drawTurtle();
+       	  Turtles[i].moveTurtle();
+        	Turtles[i].bounceTurtle();
 	  }
 
 }
+
+function keyPressed() {
+     if (keyCode === UP_ARROW) {
+       me.y = me.y - 50;
+     }
+     else if (keyCode === RIGHT_ARROW) {
+       me.x += 50;
+     }
+     else if (keyCode === LEFT_ARROW) {
+       me.x = me.x - 50;
+     }
+
+     return false; // prevent default
+   }
 
 //avatar class
 class Avatar {
@@ -40,7 +54,7 @@ class Avatar {
 	constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
 		    this.x = x;
     		this.y = y;
-        this.speed = speed;
+        this.speed = 1;
 	}
 
 	drawMe(){  // draw the running person
@@ -52,52 +66,55 @@ class Avatar {
 	}
 
 	moveMe(){
-    if (keyIsDown(UP_ARROW)) { //if you hold the up arrow, move left by speed
-       this.y = this.y - 15;
-    }
 
-    if (keyIsDown(RIGHT_ARROW)) { //if you hold the up arrow, move left by speed
-       this.x += this.speed;
-  	}
+  		this.x = this.x;
+  		this.y = this.y+this.speed;
 
-  if (keyIsDown(LEFT_ARROW)) { //if you hold the up arrow, move left by speed
-     this.x = this.x - this.speed;
-   }
+
+
+    // if (keyIsPressed(UP_ARROW)) { //if you hold the up arrow, move left by speed
+    //    this.y = this.y - 15;
+    // }
+    //
+    // if (keyIsPressed(RIGHT_ARROW)) { //if you hold the up arrow, move left by speed
+    //    this.x += this.speed;
+  	// }
+//
+//   if (keyIsDown(LEFT_ARROW)) { //if you hold the up arrow, move left by speed
+//      this.x = this.x - this.speed;
+//    }
+ }
+
+
 }
 
-  die(){
 
-  }
+//Turtle class from which to create new Turtles with similar properties.
+class Turtle {
 
-}
-
-
-//ball class from which to create new balls with similar properties.
-class Ball {
-
-	//every ball needs an x value, a y value, and a speed
+	//every Turtle needs an x value, a y value, and a speed
 	constructor(x,y, speed){
 		this.x = x;
     this.y = y;
     this.speed = speed;
 	}
 
-	// draw a ball on the screen at x,y
-	drawBall(){
+	// draw a Turtle on the screen at x,y
+	drawTurtle(){
     	stroke(0);
       strokeWeight(0);
     	fill("blue");
 		  ellipse(this.x,this.y,10,10);
 	}
 
-	//update the location of the ball, so it moves across the screen
-	moveBall(){
+	//update the location of the Turtle, so it moves across the screen
+	moveTurtle(){
 		this.x = this.x;
 		this.y = this.y-this.speed;
 	}
 
-	//if the ball hits the person, change the speed value to negative (send it in the opposite direction)
-  	bounceBall(){
+	//if the Turtle hits the person, change the speed value to negative (send it in the opposite direction)
+  	bounceTurtle(){
     		if (this.x >= me.x-15 && this.x <= me.x+15 && this.y > me.y-40 && this.y < me.y+40){
       			this.speed = -this.speed;
     		}
