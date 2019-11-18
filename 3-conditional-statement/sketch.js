@@ -1,5 +1,5 @@
 //create an empty array called balls
-let balls = [];
+let bars = [];
 
 //create a variable to hold your avatar
 let me;
@@ -11,28 +11,30 @@ function setup() {
 
   //make one avatar called me
   me = new Avatar(width/2, 300, 4);
-  bar = new Bar();
+  bar = new Bar(-100, 1);
 
 }
 
 function draw(){
 	background(220);
 
-  me.drawMe();
-  me.moveMe();
+  bar.drawBar();
+  bar.moveBar();
 
-  if (frameCount % 35 == 0) {
-      let  b = new Ball(random(0,width), 0, -3);
-      balls.push(b);
-      console.log(balls); //print the balls array to the console
+
+  if (frameCount % 70 == 0) {
+      let  b = new Bar(-100, 1);
+      bars.push(b);
+      console.log(bars); //print the balls array to the console
     }
 
 //	draw all the balls in that array
-	for (let i = 0; i < balls.length; i++) {
-	 	      balls[i].drawBall();
-       	  balls[i].moveBall();
-        	balls[i].bounceBall();
+	for (let i = 0; i < bars.length; i++) {
+	 	      bars[i].drawBar();
+       	  bars[i].moveBar();
 	  }
+    me.drawMe();
+    me.moveMe();
 
 }
 
@@ -111,7 +113,7 @@ class Ball {
 class Bar {
   //These are the background!!!!!
   //every bar needs a speed of descent (y axis), and a y value for a change in position
-  constructor(speed){
+  constructor(y, speed){
     this.y = y;
     this.speed = speed;
   }
@@ -119,13 +121,13 @@ class Bar {
   //draw a bar on the screen at (0,0)
   drawBar(){
     fill("green");
-    rectangle(0, 0+this.y, 500, 100);
+    rect(0, this.y, 500, 70);
   }
 
   //update the location of the bar, so it moves down the screen
   moveBar(){
-    0 = x;
-    this.y = 0 - this.speed;
+  //	this.x = this.x;
+    this.y = this.y + this.speed;
   }
 
 }
