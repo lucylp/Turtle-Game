@@ -4,12 +4,14 @@ let balls = [];
 //create a variable to hold your avatar
 let me;
 
+let bar;
 
 function setup() {
   createCanvas(500, 400);
 
   //make one avatar called me
   me = new Avatar(width/2, 300, 4);
+  bar = new Bar();
 
 }
 
@@ -107,7 +109,7 @@ class Ball {
 }
 
 class Bar {
-
+  //These are the background!!!!!
   //every bar needs a speed of descent (y axis), and a y value for a change in position
   constructor(speed){
     this.y = y;
@@ -123,7 +125,7 @@ class Bar {
   //update the location of the bar, so it moves down the screen
   moveBar(){
     0 = x;
-    this.y = 0 - this.speed
+    this.y = 0 - this.speed;
   }
 
 }
