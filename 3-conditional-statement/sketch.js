@@ -16,7 +16,7 @@ function setup() {
 }
 
 function draw(){
-	background(220);
+	background(92, 188, 214);
 
   bar.drawBar();
   bar.moveBar();
@@ -38,44 +38,44 @@ function draw(){
 
 }
 
+
+function keyPressed() {
+     if (keyCode === UP_ARROW) {
+       me.y = me.y - 50;
+     }
+     else if (keyCode === RIGHT_ARROW) {
+       me.x += 50;
+     }
+     else if (keyCode === LEFT_ARROW) {
+       me.x = me.x - 50;
+     }
+
+     return false; // prevent default
+   }
+
+
 //avatar class
 class Avatar {
 
 	constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
 		    this.x = x;
     		this.y = y;
-        this.speed = speed;
+        this.speed = 1;
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("yellow");
+    		stroke("green");
         strokeWeight(5);
-    		fill("yellow");
+    		fill("green");
 		    ellipse(this.x,this.y,20,20);
-        line(this.x,this.y, this.x, this.y+40);
-        line(this.x, this.y+40, this.x-20, this.y+60);
-        line(this.x, this.y+40, this.x+10, this.y+50);
-        line(this.x+10, this.y+50, this.x+5, this.y+60);
-        line(this.x, this.y+15, this.x-10, this.y+25);
-        line(this.x-10, this.y+25, this.x, this.y+30);
 	}
 
 	moveMe(){
-    if (keyIsDown(LEFT_ARROW)) { //if you hold the up arrow, move left by speed
-       this.x = this.x - this.speed;
-    }
-
-    if (keyIsDown(RIGHT_ARROW)) { // if you hold the down arrow, move right by speed
-        this.x += this.speed;
-    }
-	}
-
-  die(){
-
+  		this.x = this.x;
+  		this.y = this.y+this.speed;
   }
 
 }
-
 
 //ball class from which to create new balls with similar properties.
 class Ball {
