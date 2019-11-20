@@ -6,8 +6,12 @@ let me;
 
 let bar;
 
+let environmentColors = []
+
 function setup() {
   createCanvas(500, 400);
+  environmentColors = [color(66,135,245),color(10,138,40),color(88,189,30),color(138,219,168)]
+
 
   //make one avatar called me
   me = new Avatar(width/2, 300, 4);
@@ -55,6 +59,7 @@ function keyPressed() {
    }
 
 
+
 //avatar class
 class Avatar {
 
@@ -65,9 +70,9 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("green");
-        strokeWeight(5);
-    		fill("green");
+    		stroke("black");
+        strokeWeight(1);
+    		fill("white");
 		    ellipse(this.x,this.y,20,20);
 	}
 
@@ -81,17 +86,18 @@ class Avatar {
 class Bar {
   //These are the background!!!!!
   //every bar needs a speed of descent (y axis), and a y value for a change in position
-  constructor(y, speed){
+  constructor(y, speed, eColor){
     this.y = y;
     this.speed = speed;
+    this.eColor = environmentColors[int(random(0,environmentColors.length))];
   }
 
   //draw a bar on the screen at (0,0)
   drawBar(){
     stroke("black");
-    strokeWeight(3);
-    fill("white");
-    rect(0, this.y, 550, 70);
+    strokeWeight(1);
+    fill(this.eColor);
+    rect(-5, this.y, 550, 70);
 
   }
 
