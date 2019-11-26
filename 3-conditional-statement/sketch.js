@@ -8,32 +8,32 @@ let bar;
 
 let environmentColors = []
 
-let trashs = [];
+let t;
 
-let trash;
+let anotherFlotsam = [];
 
+//
 function setup() {
   createCanvas(500, 400);
   environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161),color(255,2,225)]
-
-
-  //make one avatar called me
+  t = new Flotsam(0, 100);
+  anotherFlotsam = new Flotsam(200,20);
   me = new Avatar(width/2, 300, 4);
-  bar = new Bar(-160, 1);
-  trash = new Flotsam((90,200),(30,150));
-
+  bar = new Bar(-160, 1, environmentColors[0]);
 }
 
 function draw(){
 	background(194,178,128);
-
-
+  t.drawTrash(); //draw the ball called b (go look in the Ball class for the drawBall function)
+  t.moveTrash(); //move the ball called b (go look in the Ball class for the moveBall function)
+  anotherFlotsam.drawTrash();
+  anotherFlotsam.moveTrash();
   bar.drawBar();
   bar.moveBar();
 
 
   if (frameCount % 70 == 0) {
-      let  b = new Bar(-160, 1);
+      let  b = new Bar(-160, 1, environmentColors[0]);
       bars.push(b);
       console.log(bars); //print the balls array to the console
     }
@@ -42,17 +42,27 @@ function draw(){
 	for (let i = 0; i < bars.length; i++) {
 	 	      bars[i].drawBar();
        	  bars[i].moveBar();
+          //anotherFlotsam[i].drawTrash();
+          //anotherFlotsam[i].moveTrash();
 	  }
 
 
-    trash.drawTrash();
-    trash.moveTrash();
+    t.drawTrash();
+  //  t.moveTrash();
 
-    if (frameCount % 70 == 0) {
-        let  t = new Flotsam(-160, 1);
-        bars.push(t);
-        console.log(trashs); //print the balls array to the console
-      }
+    anotherFlotsam.drawTrash();
+  //  anotherFlotsam.moveTrash();
+
+    // if (frameCount % 70 == 0) {
+    //     let  t = new Flotsam(-160, 1);
+    //     bars.push(t);
+    //     console.log(trashs); //print the balls array to the console
+    //   }
+
+    // for (let i = 0; i < 50; i++) {
+	  //   anotherFlotsam[i].drawTrash();
+    //   anotherFlotsam[i].moveTrash();
+	  // }
 
       me.drawMe();
       me.moveMe();
@@ -126,7 +136,7 @@ class Bar {
 
 }
 
-class Flotsam {
+ class Flotsam {
   //These are the floating objects in the ocean. The objects in this code will eventually be replaced by images of trash etc.
   constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
 		    this.x = x;
