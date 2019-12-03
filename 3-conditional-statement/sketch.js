@@ -46,7 +46,7 @@ function draw(){
         }
 //
           if (frameCount % 25 == 0) {
-     let b = new Flotsam(random(0,width), 0 -1,);
+     let b = new Flotsam(random(0,width), 0, -1);
      flotsams.push(b);
     // console.log(Flotsams); //print the Turtles array to the console
    }
@@ -76,6 +76,7 @@ function keyPressed() {
 
      return false; // prevent default
    }
+
 
 
 
