@@ -8,26 +8,25 @@ let bar;
 
 let environmentColors = []
 
-let t;
+let b;
 
 let anotherFlotsam = [];
+
+let flotsams = [];
 
 //
 function setup() {
   createCanvas(500, 400);
   environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161),color(255,2,225)]
-  t = new Flotsam(0, 100);
-  anotherFlotsam = new Flotsam(200,20);
+
   me = new Avatar(width/2, 300, 4);
   bar = new Bar(-160, 1, environmentColors[0]);
+//  b = new Flotsam ();
 }
 
 function draw(){
 	background(194,178,128);
-  t.drawTrash(); //draw the ball called b (go look in the Ball class for the drawBall function)
-  t.moveTrash(); //move the ball called b (go look in the Ball class for the moveBall function)
-  anotherFlotsam.drawTrash();
-  anotherFlotsam.moveTrash();
+
   bar.drawBar();
   bar.moveBar();
 
@@ -44,25 +43,19 @@ function draw(){
        	  bars[i].moveBar();
           //anotherFlotsam[i].drawTrash();
           //anotherFlotsam[i].moveTrash();
-	  }
+        }
+//
+          if (frameCount % 25 == 0) {
+     let b = new Flotsam(random(0,width), 0 -1,);
+     flotsams.push(b);
+    // console.log(Flotsams); //print the Turtles array to the console
+   }
 
-
-    t.drawTrash();
-  //  t.moveTrash();
-
-    anotherFlotsam.drawTrash();
-  //  anotherFlotsam.moveTrash();
-
-    // if (frameCount % 70 == 0) {
-    //     let  t = new Flotsam(-160, 1);
-    //     bars.push(t);
-    //     console.log(trashs); //print the balls array to the console
-    //   }
-
-    // for (let i = 0; i < 50; i++) {
-	  //   anotherFlotsam[i].drawTrash();
-    //   anotherFlotsam[i].moveTrash();
-	  // }
+//	draw all the Turtles in that array
+ for (let i = 0; i < flotsams.length; i++) {
+         flotsams[i].drawFlotsam();
+         flotsams[i].moveFlotsam();
+     }
 
       me.drawMe();
       me.moveMe();
@@ -144,14 +137,14 @@ class Bar {
         this.speed = 1;
 	}
 
-	drawTrash(){  // draw the obstacle
+	drawFlotsam(){  // draw the obstacle
     		stroke("black");
         strokeWeight(1);
     		fill("red");
 		    ellipse(this.x,this.y,10,10);
 	}
 
-	moveTrash(){
+	moveFlotsam(){
   		this.x = this.x;
   		this.y = this.y+this.speed;
   }
