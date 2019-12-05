@@ -14,10 +14,13 @@ let anotherFlotsam = [];
 
 let flotsams = [];
 
+let places = [];
+
 //
 function setup() {
   createCanvas(500, 400);
   environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161),color(255,2,225)]
+  places = [(10), (80), (130), (180), (250), (320), (390), (460)];
 
   me = new Avatar(width/2, 300, 4);
   bar = new Bar(-160, 1, environmentColors[0]);
@@ -46,7 +49,7 @@ function draw(){
         }
 //
           if (frameCount % 25 == 0) {
-     let b = new Flotsam(random(0,width), 0, -1);
+     let b = new Flotsam(places[0], 20, -1);
      flotsams.push(b);
     // console.log(Flotsams); //print the Turtles array to the console
    }
@@ -133,7 +136,7 @@ class Bar {
  class Flotsam {
   //These are the floating objects in the ocean. The objects in this code will eventually be replaced by images of trash etc.
   constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
-		    this.x = x;
+		    this.x = places[int(random(0,places.length))];
     		this.y = y;
         this.speed = 1;
 	}
