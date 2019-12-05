@@ -1,7 +1,6 @@
 //create an empty array called balls
 let bars = [];
 
-//create a variable to hold your avatar
 let me;
 
 let bar;
@@ -10,17 +9,21 @@ let environmentColors = []
 
 let b;
 
+let c;
+
+let d;
+
 let anotherFlotsam = [];
 
 let flotsams = [];
 
-let places = [];
+let places = [40, 110, 180, 250, 320, 390, 460];
 
 //
 function setup() {
   createCanvas(500, 400);
   environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161),color(255,2,225)]
-  places = [(10), (80), (130), (180), (250), (320), (390), (460)];
+
 
   me = new Avatar(width/2, 300, 4);
   bar = new Bar(-160, 1, environmentColors[0]);
@@ -48,11 +51,14 @@ function draw(){
           //anotherFlotsam[i].moveTrash();
         }
 //
-          if (frameCount % 25 == 0) {
-     let b = new Flotsam(places[0], 20, -1);
+          if (frameCount % 70 == 0) {
+     let b = new Flotsam(places[0], -50, -1);
      flotsams.push(b);
-    // console.log(Flotsams); //print the Turtles array to the console
-   }
+     let c = new Flotsam(places[0], -50, -1);
+     flotsams.push(c);
+     let d = new Flotsam(places[0], -50, -1);
+               flotsams.push(d);
+        }
 
 //	draw all the Turtles in that array
  for (let i = 0; i < flotsams.length; i++) {
