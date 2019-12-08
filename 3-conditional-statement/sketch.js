@@ -56,8 +56,8 @@ function draw(){
      flotsams.push(b);
      let c = new Flotsam(places[0], -50, -1);
      flotsams.push(c);
-     let d = new Flotsam(places[0], -50, -1);
-               flotsams.push(d);
+     // let d = new Flotsam(places[0], -50, -1);
+     // flotsams.push(d);
         }
 
 //	draw all the Turtles in that array
@@ -82,9 +82,12 @@ function keyPressed() {
      else if (keyCode === LEFT_ARROW) {
        me.x = me.x - 70;
      }
+     else if (keyCode === DOWN_ARROW) {
+       me.y += 70;
+     }
 
      return false; // prevent default
-   }
+ }
 
 
 
