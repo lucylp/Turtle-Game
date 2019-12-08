@@ -25,7 +25,7 @@ var turtleY;
 //
 
 function preload() {
-    turtle = loadAnimation('sprites/turtle001.png', 'sprites/turtle007.png');
+    turtle = loadAnimation ('sprites/turtle001.png', 'sprites/turtle007.png');
 
 }
 
