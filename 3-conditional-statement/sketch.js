@@ -21,6 +21,7 @@ let places = [40, 110, 180, 250, 320, 390, 460];
 
 var turtle;
 var turtleY;
+
 //
 
 function preload() {
@@ -110,7 +111,7 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-		animation(turtle, this.x, turtleY++);
+		animation(turtle, this.x, this.y);
 	}
 
 	moveMe(){
