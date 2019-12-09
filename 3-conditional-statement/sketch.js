@@ -19,14 +19,23 @@ let flotsams = [];
 
 let places = [40, 110, 180, 250, 320, 390, 460];
 
-//
-function setup() {
-  createCanvas(500, 400);
-  environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161),color(255,2,225)]
+var turtle;
+var turtleY;
 
+//
+
+function preload() {
+    turtle = loadAnimation ('sprites/turtle001.png', 'sprites/turtle007.png');
+
+}
+
+function setup() {
+  createCanvas(800, 600);
+  environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161)]
+  turtleY = 0
 
   me = new Avatar(width/2, 300, 4);
-  bar = new Bar(-160, 1, environmentColors[0]);
+  bar = new Bar(-160, 2, environmentColors[0]);
 //  b = new Flotsam ();
 }
 
@@ -37,8 +46,8 @@ function draw(){
   bar.moveBar();
 
 
-  if (frameCount % 70 == 0) {
-      let  b = new Bar(-160, 1, environmentColors[0]);
+  if (frameCount % 35 == 0) {
+      let  b = new Bar(-160, 2, environmentColors[0]);
       bars.push(b);
       console.log(bars); //print the balls array to the console
     }
@@ -51,13 +60,13 @@ function draw(){
           //anotherFlotsam[i].moveTrash();
         }
 //
-          if (frameCount % 70 == 0) {
+          if (frameCount % 35 == 0) {
      let b = new Flotsam(places[0], -50, -1);
      flotsams.push(b);
      let c = new Flotsam(places[0], -50, -1);
      flotsams.push(c);
-     let d = new Flotsam(places[0], -50, -1);
-               flotsams.push(d);
+     // let d = new Flotsam(places[0], -50, -1);
+     // flotsams.push(d);
         }
 
 //	draw all the Turtles in that array
@@ -82,9 +91,12 @@ function keyPressed() {
      else if (keyCode === LEFT_ARROW) {
        me.x = me.x - 70;
      }
+     else if (keyCode === DOWN_ARROW) {
+       me.y += 70;
+     }
 
      return false; // prevent default
-   }
+ }
 
 
 
@@ -95,14 +107,11 @@ class Avatar {
 	constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
 		    this.x = x;
     		this.y = y;
-        this.speed = 1;
+        this.speed = 2;
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("black");
-        strokeWeight(1);
-    		fill("white");
-		    ellipse(this.x,this.y,20,20);
+		animation(turtle, this.x, this.y);
 	}
 
 	moveMe(){
@@ -144,7 +153,7 @@ class Bar {
   constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
 		    this.x = places[int(random(0,places.length))];
     		this.y = y;
-        this.speed = 1;
+        this.speed = 2;
 	}
 
 	drawFlotsam(){  // draw the obstacle
