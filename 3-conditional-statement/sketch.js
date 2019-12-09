@@ -132,8 +132,7 @@ class Bar {
 
   //draw a bar on the screen at (0,0)
   drawBar(){
-    stroke("black");
-    strokeWeight(1);
+    noStroke();
     fill(this.eColor);
     rect(-5, this.y, 550, 70);
 
