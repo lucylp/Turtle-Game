@@ -30,7 +30,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(500, 400);
+  createCanvas(800, 600);
   environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161)]
   turtleY = 0
 
