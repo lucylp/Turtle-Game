@@ -49,7 +49,7 @@ function draw(){
   if (frameCount % 35 == 0) {
       let  b = new Bar(-160, 2, environmentColors[0]);
       bars.push(b);
-      console.log(bars); //print the balls array to the console
+      //console.log(bars); //print the balls array to the console
     }
 
 //	draw all the balls in that array
@@ -65,18 +65,20 @@ function draw(){
      flotsams.push(b);
      let c = new Flotsam(places[0], -50, -1);
      flotsams.push(c);
-     // let d = new Flotsam(places[0], -50, -1);
-     // flotsams.push(d);
+     let d = new Flotsam(places[0], -50, -1);
+     flotsams.push(d);
         }
 
 //	draw all the Turtles in that array
  for (let i = 0; i < flotsams.length; i++) {
          flotsams[i].drawFlotsam();
          flotsams[i].moveFlotsam();
+         flotsams[i].restartTurtle();
      }
 
       me.drawMe();
       me.moveMe();
+//      print (me.x,me.y);
 
 }
 
@@ -165,5 +167,15 @@ class Bar {
 	moveFlotsam(){
   		this.x = this.x;
   		this.y = this.y+this.speed;
+  }
+
+  restartTurtle(){
+
+     // if (this.x-3<= me.x && this.x+3 >=me.x && this.y-3<= me.y && this.y+3 >= me.y){
+     if(this.y>=me.y-30 && this.y<=me.y+70 && this.x>=me.x && this.x<me.x+40){
+       me.y = height;
+       //print("bounced the turtle")
+     }
+
   }
 }
