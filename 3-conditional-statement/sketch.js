@@ -17,7 +17,7 @@ let anotherFlotsam = [];
 
 let flotsams = [];
 
-let places = [40, 110, 180, 250, 320, 390, 460, 510, 580, 650, 720, 880];
+let places = [40, 110, 180, 250, 320, 390, 460, 530, 600, 670, 740];
 
 var turtle;
 var turtleY;
