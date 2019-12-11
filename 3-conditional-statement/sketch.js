@@ -17,7 +17,7 @@ let anotherFlotsam = [];
 
 let flotsams = [];
 
-let places = [40, 110, 180, 250, 320, 390, 460, 530, 600, 670, 740];
+let places = [50, 120, 190, 260, 330, 400, 470, 540, 610, 680, 750];
 
 var turtle;
 var turtleY;
@@ -35,7 +35,7 @@ function setup() {
   environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161)]
   turtleY = 0
 
-  me = new Avatar(width/2, 300, 4);
+  me = new Avatar(380, 300, 4);
   bar = new Bar(-160, 2, environmentColors[0]);
 //  b = new Flotsam ();
 }
@@ -62,11 +62,11 @@ function draw(){
         }
 //
           if (frameCount % 35 == 0) {
-     let b = new Flotsam(places[0], -50, -1);
+     let b = new Flotsam(places[0], -95, -1);
      flotsams.push(b);
-     let c = new Flotsam(places[0], -50, -1);
+     let c = new Flotsam(places[0], -95, -1);
      flotsams.push(c);
-     let d = new Flotsam(places[0], -50, -1);
+     let d = new Flotsam(places[0], -95, -1);
      flotsams.push(d);
         }
 
