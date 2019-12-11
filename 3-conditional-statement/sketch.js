@@ -172,7 +172,7 @@ class Bar {
      // if (this.x-3<= me.x && this.x+3 >=me.x && this.y-3<= me.y && this.y+3 >= me.y){
      if(this.y>=me.y-30 && this.y<=me.y+70 && this.x>=me.x && this.x<me.x+40){
        me.y = height;
-       //print("bounced the turtle")
+      // print("bounced the turtle")
      }
 
   }
