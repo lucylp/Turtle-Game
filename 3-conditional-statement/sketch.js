@@ -26,6 +26,7 @@ var turtleY;
 
 function preload() {
     turtle = loadAnimation ('sprites/turtle001.png', 'sprites/turtle007.png');
+    bag = loadImage ('bag.png')
 
 }
 
@@ -158,10 +159,7 @@ class Bar {
 	}
 
 	drawFlotsam(){  // draw the obstacle
-    		stroke("black");
-        strokeWeight(1);
-    		fill("red");
-		    ellipse(this.x,this.y,10,10);
+    	image(bag, this.x, this.y);
 	}
 
 	moveFlotsam(){
