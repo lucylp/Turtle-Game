@@ -20,25 +20,32 @@ let flotsams = [];
 let places = [50, 120, 190, 260, 330, 400, 470, 540, 610, 680, 750];
 
 var turtle;
-var turtleY;
+
+let straw;
+let bag;
+
+let trashImages = [];
 
 //
 
 function preload() {
     turtle = loadAnimation ('sprites/turtle001.png', 'sprites/turtle007.png');
-    bag = loadImage ('bag.png')
-    straw = loadImage ('straw.png')
+    bag = loadImage ('bag.png');
+    straw = loadImage ('straw.png');
 
 }
 
 function setup() {
+  imageMode(CENTER);
   createCanvas(800, 600);
   environmentColors = [color(0,132,255),color(2,112,217),color(0,90,173),color(16,99,176),color(23,118,207),color(28,145,255),color(59,160,255),color(46,130,209),color(35,100,161)]
-  turtleY = 0
-
-  me = new Avatar(380, 300, 4);
+//
+  me = new Avatar(400, 300, 4);
   bar = new Bar(-160, 2, environmentColors[0]);
 //  b = new Flotsam ();
+   trashImages.push(bag);
+   trashImages.push(straw);
+
 }
 
 function draw(){
@@ -63,12 +70,12 @@ function draw(){
         }
 //
           if (frameCount % 35 == 0) {
-     let b = new Flotsam(places[0], -95, -1);
+     let b = new Flotsam(places[0], -125, -1);
      flotsams.push(b);
-     let c = new Flotsam(places[0], -95, -1);
+     let c = new Flotsam(places[0], -125, -1);
      flotsams.push(c);
-     let d = new Flotsam(places[0], -95, -1);
-     flotsams.push(d);
+     // let d = new Flotsam(places[0], -95, -1);
+     // flotsams.push(d);
         }
 
 //	draw all the Turtles in that array
@@ -84,17 +91,7 @@ function draw(){
 
 }
 
-function randomJetsam(){
-    let diceRoll = int(random(0,2));
-  print(diceRoll);
 
-  if (diceRoll == 0){
-    image('straw.png');
-  }
-  else{
-    image('bag.png');
-  }
-}
 
 
 function keyPressed() {
@@ -113,8 +110,6 @@ function keyPressed() {
 
      return false; // prevent default
  }
-
-
 
 
 //avatar class
@@ -165,15 +160,27 @@ class Bar {
 
  class Flotsam {
   //These are the floating objects in the ocean. The objects in this code will eventually be replaced by images of trash etc.
-  constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
+  constructor(x,y, speed,dice){ //every avatar needs an x value, a y value, and a speed
 		    this.x = places[int(random(0,places.length))];
     		this.y = y;
         this.speed = 2;
+        this.dice =  int(random(0,2));
 	}
 
 	drawFlotsam(){  // draw the obstacle
-    	randomJetsam(this.x, this.y);
-      
+    	// randomJetsam(this.x, this.y);
+      // function randomJetsam(){
+        //let diceRoll = int(random(0,2));
+      //  print(diceRoll);
+
+        if (this.dice == 0){
+          image(straw,this.x,this.y)
+        }
+        else{
+          image(bag, this.x, this.y)
+        }
+
+
 	}
 
 	moveFlotsam(){
@@ -184,9 +191,10 @@ class Bar {
   restartTurtle(){
 
      // if (this.x-3<= me.x && this.x+3 >=me.x && this.y-3<= me.y && this.y+3 >= me.y){
-     if(this.y>=me.y-30 && this.y<=me.y+70 && this.x>=me.x && this.x<me.x+40){
-       me.y = height;
-      // print("bounced the turtle")
+     if(this.y+35 >= me.y && this.y<=me.y && this.x+35 >= me.x && this.x -35  <me.x+35){
+      // me.y = height;
+      print("bounced the turtle")
+      location.reload();
      }
 
   }
