@@ -27,6 +27,7 @@ var turtleY;
 function preload() {
     turtle = loadAnimation ('sprites/turtle001.png', 'sprites/turtle007.png');
     bag = loadImage ('bag.png')
+    straw = loadImage ('straw.png')
 
 }
 
@@ -81,6 +82,18 @@ function draw(){
       me.moveMe();
 //      print (me.x,me.y);
 
+}
+
+function randomJetsam(){
+    let diceRoll = int(random(0,2));
+  print(diceRoll);
+
+  if (diceRoll == 0){
+    image('straw.png');
+  }
+  else{
+    image('bag.png');
+  }
 }
 
 
@@ -159,7 +172,8 @@ class Bar {
 	}
 
 	drawFlotsam(){  // draw the obstacle
-    	image(bag, this.x, this.y);
+    	randomJetsam(this.x, this.y);
+      
 	}
 
 	moveFlotsam(){
